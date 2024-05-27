@@ -1,8 +1,8 @@
 # Maintainer: fenuks
 
 pkgname=kanata
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Bring the customizability of a QMK board to any keyboard near you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/jtroo/kanata"
@@ -11,7 +11,7 @@ depends=(libevdev)
 optdepends=()
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" 'kanata.service')
-sha256sums=('9e3bbd0f70dea8c3d6b9db358b1435cec25cf6db55987d595cde797a556436c5'
+sha256sums=('c0e047197af23cf434adf20e21a871b7b12c876b58ac75852d662c004bf49f2c'
             '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55')
 
 prepare() {
