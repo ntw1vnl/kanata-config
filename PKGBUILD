@@ -1,8 +1,8 @@
 # Maintainer: fenuks
 
 pkgname=kanata
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Bring the customizability of a QMK board to any keyboard near you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/jtroo/kanata"
@@ -12,17 +12,13 @@ optdepends=()
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'kanata.service'
-        'cargo.lock.patch'
 )
-sha256sums=('c0e047197af23cf434adf20e21a871b7b12c876b58ac75852d662c004bf49f2c'
-            '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55'
-            '0e20c9f168d165ff76785e7c2560f6359ebfae1e480d4e6be4c70e79400fe61b'
-)
+sha256sums=('eb7e11511f77558d72b5b3b0c9defb04b269637e5c8a4ad9b45d21382e9247d2'
+            '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  patch -i "${srcdir}/cargo.lock.patch"
   cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
