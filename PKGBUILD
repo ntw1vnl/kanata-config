@@ -2,11 +2,11 @@
 
 pkgname=kanata
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bring the customizability of a QMK board to any keyboard near you"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/jtroo/kanata"
-license=("LGPL-3.0")
+license=('LGPL-3.0-only')
 depends=(libevdev)
 optdepends=()
 makedepends=(cargo)
