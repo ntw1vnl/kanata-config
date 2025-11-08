@@ -32,5 +32,4 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname}"
-  install -Dm0644 -t "$pkgdir/usr/lib/systemd/system/" "${srcdir}/kanata.service"
 }
