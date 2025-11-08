@@ -1,0 +1,68 @@
+(defcfg
+  danger-enable-cmd yes
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  linux-dev-names-include (
+    "AT Translated Set 2 keyboard"
+  )
+)
+
+(defvirtualkeys relf24 (release-key f24))
+
+(defsrc
+  F1 F2
+  caps
+  a s d f g h j k l ;
+  lalt spc ralt rctl
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+)
+
+(defalias
+  a (multi f24 (tap-hold $tap-time $hold-time a lmet))
+  s (multi f24 (tap-hold $tap-time $hold-time s lalt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
+  ; (multi f24 (tap-hold $tap-time $hold-time ; rmet))
+  cap_nav (tap-hold-press $tap-time $hold-time esc (layer-toggle caps-mod))
+  cap_ctl_esc (tap-hold-press $tap-time $hold-time esc (layer-toggle caps-mod))
+  capsword (caps-word 2000)
+  sw_layer_hrm (multi (layer-switch base-hrm) (cmd bash -c "notify-send 'Keyboard Layout Change' 'Home Row Mods Layout Activated'"))
+  sw_layer_def (multi (layer-switch base-def) (cmd bash -c "notify-send 'Keyboard Layout Change' 'Default Layout Activated'"))
+  comp (layer-while-held base-switcher)
+)
+
+(deflayer base-hrm
+  _ _
+  @cap_nav
+  @a @s @d @f _ _ @j @k @l @;
+  esc _ bspc @comp
+)
+
+(deflayer base-switcher
+  @sw_layer_hrm @sw_layer_def
+  _
+  _ _ _ _ _ _ _ _ _ _
+  _ _ _ _
+)
+
+(deflayer base-def
+  F1 F2
+  @cap_ctl_esc
+  a s d f _ _ j k l ;
+  lalt _ ralt @comp
+)
+
+;; shifted layer activated by holding CAPS lock
+(deflayer caps-mod
+  _ _
+  _
+  _ _ _ _ _ left down up right _
+  _ ret _ _
+)
