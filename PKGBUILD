@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
   'kanata.service'
 )
 sha256sums=('6c2d0bec8390cd0d7807aeb2550d0888434cd71d3e8c89a2765c18dd53b946ac'
-            '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55')
+  '02f657a0d3e6c2621d74282b192c45bbfba868a26c35fe0f351cb77c3c666e55')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
